@@ -110,7 +110,7 @@ function switchGallery(thumb, src) {
 /* ============================================================
    CART SIDEBAR
    ============================================================ */
-const SHOPIFY_STORE = 'checkout.trypupsmile.com';
+const SHOPIFY_STORE = 'trypupsmile.myshopify.com';
 const VARIANT_ID = '53319800521031';
 const PRICE = 39.95;
 let cartQty = 0;
