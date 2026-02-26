@@ -1344,7 +1344,7 @@ img { display: block; max-width: 100%; }
 
   /* ── Hero mobile: show inline image, hide sidebar image ── */
   .hero__visual           { display: none; }
-  .hero__visual--mobile   { display: block; margin-bottom: 28px; }
+  .hero__visual--mobile   { display: block; margin-bottom: 40px; }
 }
 
 /* ============================================================

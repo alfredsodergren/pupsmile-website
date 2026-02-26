@@ -1,16 +1,9 @@
 
-# HTML — short cache, always revalidate so deploys go live instantly
+# All files: revalidate on every visit (safe default)
 /*
   Cache-Control: public, max-age=0, must-revalidate
 
-# CSS & JS — long cache (filename doesn't change but content does on redeploy)
-/styles.css
-  Cache-Control: public, max-age=31536000
-
-/script.js
-  Cache-Control: public, max-age=31536000
-
-# Images — cache for a year
+# Images only: cache for a year (content never changes once uploaded)
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
