@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PupSmile — Dog Dental Powder That Actually Works</title>
-  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" rel="stylesheet" />
+  <!-- Non-render-blocking font load: page paints immediately, fonts swap in once ready -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" /></noscript>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -72,6 +75,11 @@
         <p class="hero__sub hero-anim" style="--d:.2s">
           PupSmile's postbiotic dental powder keeps your dog's teeth clean every day — one sprinkle on their food. No brushing. No vet drama. No outrageous cleaning bills.
         </p>
+
+        <!-- Mobile-only: image sits between subtext and stats -->
+        <div class="hero__visual--mobile">
+          <img src="images/banner image.png" alt="PupSmile dental powder for dogs" class="hero__banner-img" />
+        </div>
 
         <div class="hero__stats hero-anim" style="--d:.3s">
           <div class="hero__stat">
@@ -227,7 +235,7 @@
   <section class="section before-after" id="results">
     <div class="container ba-inner reveal-split">
       <div class="ba-img-wrap">
-        <img src="images/before-after.png" alt="Dog teeth before and after using PupSmile dental powder" class="ba-img" />
+        <img src="images/before-after.png" alt="Dog teeth before and after using PupSmile dental powder" loading="lazy" class="ba-img" />
         <div class="ba-labels">
           <span class="ba-label ba-before">Before</span>
           <span class="ba-label ba-after">After 30 days</span>
@@ -312,7 +320,7 @@
   <section class="section founder" id="founder">
     <div class="container founder-inner reveal-split">
       <div class="founder-img-wrap">
-        <img src="images/founder.png" alt="Sarah, PupSmile founder" class="founder-img" />
+        <img src="images/founder.png" alt="Sarah, PupSmile founder" loading="lazy" class="founder-img" />
         <div class="founder-img-caption">Sarah · Founder, PupSmile</div>
       </div>
       <div class="founder-text">
@@ -342,7 +350,7 @@
 
         <div class="review-card stagger-item">
           <div class="rc-img-wrap">
-            <img src="images/testimonial image 2.png" alt="Dog next to PupSmile" class="rc-img" />
+            <img src="images/testimonial image 2.png" alt="Dog next to PupSmile" loading="lazy" class="rc-img" />
           </div>
           <div class="rc-body">
             <div class="rc-stars">★★★★★</div>
@@ -356,7 +364,7 @@
 
         <div class="review-card stagger-item">
           <div class="rc-img-wrap">
-            <img src="images/testimonial image 1.png" alt="Customer holding PupSmile" class="rc-img" />
+            <img src="images/testimonial image 1.png" alt="Customer holding PupSmile" loading="lazy" class="rc-img" />
           </div>
           <div class="rc-body">
             <div class="rc-stars">★★★★★</div>
@@ -370,7 +378,7 @@
 
         <div class="review-card stagger-item">
           <div class="rc-img-wrap">
-            <img src="images/testimonial image 3.png" alt="Happy dog after using PupSmile" class="rc-img" />
+            <img src="images/testimonial image 3.png" alt="Happy dog after using PupSmile" loading="lazy" class="rc-img" />
           </div>
           <div class="rc-body">
             <div class="rc-stars">★★★★★</div>
@@ -484,7 +492,7 @@
 
       <div class="ebook-device-wrap">
         <div class="ebook-glow" aria-hidden="true"></div>
-        <img src="images/free e-book.png" alt="Secrets From The Vet's Office on phone" class="ebook-phone" />
+        <img src="images/free e-book.png" loading="lazy" alt="Secrets From The Vet's Office on phone" class="ebook-phone" />
       </div>
 
     </div>
@@ -504,7 +512,7 @@
         <!-- Row 1: three photos to open strong -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/11.png" alt="Adding PupSmile dental powder to dog food" class="rpc-img" />
+            <img src="images to use for reviews/11.png" alt="Adding PupSmile dental powder to dog food" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -520,7 +528,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/4.png" alt="Dog teeth before and after PupSmile" class="rpc-img" />
+            <img src="images to use for reviews/4.png" alt="Dog teeth before and after PupSmile" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -536,7 +544,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/12.png" alt="Two dogs eating with PupSmile jar" class="rpc-img" />
+            <img src="images to use for reviews/12.png" alt="Two dogs eating with PupSmile jar" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -553,7 +561,7 @@
         <!-- Row 2 -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/2.png" alt="German Shepherd with clean teeth" class="rpc-img" />
+            <img src="images to use for reviews/2.png" alt="German Shepherd with clean teeth" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -580,7 +588,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/14.png" alt="Dachshund next to PupSmile jar" class="rpc-img" />
+            <img src="images to use for reviews/14.png" alt="Dachshund next to PupSmile jar" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -608,7 +616,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/6.png" alt="Golden retriever showing clean teeth" class="rpc-img" />
+            <img src="images to use for reviews/6.png" alt="Golden retriever showing clean teeth" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -636,7 +644,7 @@
         <!-- Row 4 -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/13.png" alt="Rottweiler mix licking lips after meal" class="rpc-img" />
+            <img src="images to use for reviews/13.png" alt="Rottweiler mix licking lips after meal" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -676,7 +684,7 @@
         <!-- Row 5 -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/3.png" alt="Black dog with clean teeth" class="rpc-img" />
+            <img src="images to use for reviews/3.png" alt="Black dog with clean teeth" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -692,7 +700,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/8.png" alt="Happy golden retriever in car window" class="rpc-img" />
+            <img src="images to use for reviews/8.png" alt="Happy golden retriever in car window" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -731,7 +739,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/10.png" alt="Golden retriever sitting on couch smiling" class="rpc-img" />
+            <img src="images to use for reviews/10.png" alt="Golden retriever sitting on couch smiling" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -759,7 +767,7 @@
         <!-- Row 7 -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/7.png" alt="Terrier showing clean teeth" class="rpc-img" />
+            <img src="images to use for reviews/7.png" alt="Terrier showing clean teeth" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -810,7 +818,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/5.png" alt="Group of dogs all healthy and happy" class="rpc-img" />
+            <img src="images to use for reviews/5.png" alt="Group of dogs all healthy and happy" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -839,7 +847,7 @@
         <!-- Row 9 -->
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/9.png" alt="German Shepherd mix with healthy teeth" class="rpc-img" />
+            <img src="images to use for reviews/9.png" alt="German Shepherd mix with healthy teeth" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -890,7 +898,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/1.png" alt="PupSmile dental powder jar" class="rpc-img" />
+            <img src="images to use for reviews/1.png" alt="PupSmile dental powder jar" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -906,7 +914,7 @@
 
         <div class="review-photo-card">
           <div class="rpc-img-wrap">
-            <img src="images to use for reviews/15.png" alt="PupSmile jar on kitchen counter" class="rpc-img" />
+            <img src="images to use for reviews/15.png" alt="PupSmile jar on kitchen counter" loading="lazy" class="rpc-img" />
           </div>
           <div class="rpc-body">
             <div class="rtc-header">
@@ -1379,7 +1387,7 @@
     </div>
     <div class="cart-body">
       <div class="cart-item">
-        <img src="images/product.png" alt="PupSmile Dental Powder" class="cart-item-img" />
+        <img src="images/product.png" alt="PupSmile Dental Powder" loading="lazy" class="cart-item-img" />
         <div class="cart-item-info">
           <p class="cart-item-name">PupSmile Dental Powder</p>
           <p class="cart-item-sub">Monthly auto-delivery · 120g</p>
@@ -1395,7 +1403,7 @@
       <!-- Free ebook gift — shown when cart has items -->
       <div class="cart-ebook" id="cartEbook" style="display:none">
         <div class="cart-ebook-img-wrap">
-          <img src="images/free e-book.png" alt="Free E-Book" class="cart-ebook-img" />
+          <img src="images/free e-book.png" loading="lazy" alt="Free E-Book" class="cart-ebook-img" />
         </div>
         <div class="cart-ebook-info">
           <span class="cart-ebook-badge">🎁 Free gift included</span>

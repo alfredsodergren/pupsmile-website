@@ -267,6 +267,7 @@ img { display: block; max-width: 100%; }
 .hero__guarantee { font-size: 13px; color: var(--muted); }
 
 /* Product visual */
+.hero__visual--mobile { display: none; } /* hidden on desktop, shown on mobile via media query */
 .hero__visual { display: flex; justify-content: center; align-items: center; }
 .hero__banner-img {
   width: 100%;
@@ -1340,6 +1341,10 @@ img { display: block; max-width: 100%; }
   .ann-bar           { font-size: 12px; }
   .problem           { padding: 72px 0; }
   .founder-inner     { gap: 32px; }
+
+  /* ── Hero mobile: show inline image, hide sidebar image ── */
+  .hero__visual           { display: none; }
+  .hero__visual--mobile   { display: block; margin-bottom: 28px; }
 }
 
 /* ============================================================
