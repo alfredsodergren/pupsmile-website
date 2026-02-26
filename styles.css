@@ -1789,6 +1789,91 @@ img { display: block; max-width: 100%; }
 }
 .track-result-card.visible { display: block; }
 
+/* Progress bar */
+.tp-bar {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.tp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.tp-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e0e8e0;
+  border: 2px solid #e0e8e0;
+  flex-shrink: 0;
+  transition: background .2s, border-color .2s;
+}
+.tp-step.done .tp-dot {
+  background: var(--green);
+  border-color: var(--green);
+}
+.tp-step.now .tp-dot {
+  background: #fff;
+  border-color: var(--green);
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(54, 130, 54, .18);
+}
+.tp-label {
+  font-size: 10px;
+  color: #bbb;
+  margin-top: 7px;
+  text-align: center;
+  width: 60px;
+  line-height: 1.25;
+}
+.tp-step.done .tp-label,
+.tp-step.now  .tp-label { color: var(--green-dk); font-weight: 600; }
+.tp-line {
+  flex: 1;
+  height: 2px;
+  background: #e0e8e0;
+  margin-top: 6px;
+  transition: background .2s;
+}
+.tp-line.done { background: var(--green); }
+
+/* Status row (badge + days) */
+.track-status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.track-transit-days {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Info box (syncing / neutral messages) */
+.track-info {
+  display: none;
+  background: #fff8e1;
+  border: 1.5px solid #ffe082;
+  border-radius: var(--r-sm);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #7c5a00;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+.track-info.visible { display: block; }
+
+/* Event meta parts */
+.tev-body { min-width: 0; }
+.tev-location { color: var(--muted); font-size: 12px; }
+.tev-date     { color: var(--muted); font-size: 12px; }
+.tev-sep      { margin: 0 5px; color: #ccc; font-size: 11px; }
+
 /* Status badge */
 .track-badge {
   display: inline-flex;
@@ -2114,4 +2199,35 @@ img { display: block; max-width: 100%; }
   .contact-form-card { padding: 24px 16px; }
   .cf-row { grid-template-columns: 1fr; }
   .cf-submit-row .btn { width: 100%; }
+}
+
+/* ============================================================
+   REVIEWS SHOW MORE
+   ============================================================ */
+.reviews-show-more {
+  text-align: center;
+  margin-top: 32px;
+}
+.btn--outline {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green-dk);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 32px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  display: inline-block;
+}
+.btn--outline:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+/* track-order responsive tweaks */
+@media (max-width: 640px) {
+  .tp-label { width: 44px; font-size: 9px; }
+  .track-result-card { padding: 20px 16px 24px; }
 }

@@ -232,3 +232,42 @@ function appendUserReview(r, prepend) {
   const saved = JSON.parse(localStorage.getItem('pupsmileReviews') || '[]');
   if (saved.length) saved.forEach(r => appendUserReview(r, false));
 })();
+
+/* ============================================================
+   REVIEWS PAGINATION — show 20 at a time, "Show more" button
+   ============================================================ */
+(function initReviewsPagination() {
+  const grid = document.querySelector('.reviews-text-grid');
+  if (!grid) return;
+
+  const BATCH = 20;
+  // Direct children are the cards (no stagger-item wrapper in this grid)
+  const items = Array.from(grid.children);
+  if (items.length <= BATCH) return;
+
+  let shown = BATCH;
+
+  // Hide everything beyond first batch
+  items.slice(BATCH).forEach(item => { item.style.display = 'none'; });
+
+  // Create button
+  const wrap = document.createElement('div');
+  wrap.className = 'reviews-show-more';
+  const btn = document.createElement('button');
+  btn.className = 'btn btn--outline';
+  btn.textContent = `Show ${Math.min(BATCH, items.length - shown)} more reviews`;
+  wrap.appendChild(btn);
+  grid.insertAdjacentElement('afterend', wrap);
+
+  btn.addEventListener('click', () => {
+    const batch = items.slice(shown, shown + BATCH);
+    batch.forEach(item => { item.style.display = ''; });
+    shown += batch.length;
+    const remaining = items.length - shown;
+    if (remaining <= 0) {
+      wrap.remove();
+    } else {
+      btn.textContent = `Show ${Math.min(BATCH, remaining)} more reviews`;
+    }
+  });
+})();
