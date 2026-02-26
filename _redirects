@@ -1,0 +1,6 @@
+# Clean URLs (optional — removes .html extension from links)
+/privacy-policy    /privacy-policy.html    200
+/terms-of-service  /terms-of-service.html  200
+/refund-policy     /refund-policy.html     200
+/shipping-policy   /shipping-policy.html   200
+/medical-disclaimer /medical-disclaimer.html 200
