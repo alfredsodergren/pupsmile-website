@@ -22,24 +22,30 @@ const CARRIER_PATTERNS = [
   /\bsingpost\b/gi,
 ];
 
-function isOriginLocation(location) {
-  if (!location) return false;
-  const loc = location.toLowerCase();
-  return CHINESE_KEYWORDS.some((kw) => loc.includes(kw));
-}
 
+// Sanitize free-text: strip carrier names, replace Chinese locations with neutral terms.
+// Used on both event descriptions AND location strings.
 function sanitize(text) {
   if (!text) return '';
   let t = text;
   CARRIER_PATTERNS.forEach((re) => {
     t = t.replace(re, 'carrier');
   });
-  // Replace specific Chinese city names left after pattern cleanup
-  const cityRe = /\b(shenzhen|guangzhou|shanghai|beijing|hangzhou|yiwu|dongguan|guangdong|chengdu|tianjin|wuhan|ningbo|suzhou|foshan)\b/gi;
-  t = t.replace(cityRe, 'fulfillment center');
-  t = t.replace(/\bchina\b/gi, 'fulfillment center');
-  t = t.replace(/\bhong\s*kong\b/gi, 'fulfillment center');
+  const cityRe = /\b(shenzhen|guangzhou|shanghai|beijing|hangzhou|yiwu|dongguan|guangdong|chengdu|tianjin|wuhan|ningbo|suzhou|foshan|zhejiang|fujian|sichuan|jiangsu)\b/gi;
+  t = t.replace(cityRe, 'Fulfillment Center');
+  t = t.replace(/\bchina\b/gi, 'Fulfillment Center');
+  t = t.replace(/\bhong\s*kong\b/gi, 'Fulfillment Center');
+  t = t.replace(/\bmacau\b/gi, 'Fulfillment Center');
   return t;
+}
+
+// Sanitize a location string specifically — if it's an origin city we
+// want to show a neutral label rather than a real city/country.
+function sanitizeLocation(loc) {
+  if (!loc) return '';
+  const sanitized = sanitize(loc);
+  // If the whole location collapsed to just "Fulfillment Center", keep it clean
+  return sanitized.trim();
 }
 
 // Human-readable status info
@@ -138,26 +144,22 @@ exports.handler = async (event) => {
     const statusInfo = STATUS_MAP[track.e] ?? STATUS_MAP[10];
     const estimatedDelivery = track.w2?.b || null; // "YYYY-MM-DD"
 
-    // Filter events — hide anything from origin country, strip carrier names
+    // Show ALL events — sanitize location/description so nothing reveals origin.
+    // Customers see the full journey: warehouse → in transit → destination.
     const rawEvents = Array.isArray(track.z1) ? track.z1 : [];
-    let hadOriginEvents = false;
 
-    const cleanEvents = rawEvents
-      .filter((ev) => {
-        if (isOriginLocation(ev.z)) { hadOriginEvents = true; return false; }
-        return true;
-      })
-      .map((ev) => ({
-        description: sanitize(ev.a || ''),
-        location: sanitize(ev.z || ''),
-        date: ev.d || '',
-      }));
+    const cleanEvents = rawEvents.map((ev) => ({
+      description: sanitize(ev.a || ''),
+      location: sanitizeLocation(ev.z || ''),
+      date: ev.d || '',
+    }));
 
-    // Destination city: take the most-recent event that has a usable location
+    // Destination city: first event whose location is NOT a sanitized origin label
     let destinationCity = null;
     for (const ev of cleanEvents) {
-      if (ev.location && ev.location.trim().length > 1) {
-        destinationCity = ev.location.trim();
+      const loc = ev.location.trim();
+      if (loc && loc !== 'Fulfillment Center') {
+        destinationCity = loc;
         break;
       }
     }
@@ -172,7 +174,6 @@ exports.handler = async (event) => {
         estimatedDelivery,
         destinationCity,
         events: cleanEvents,
-        hadOriginEvents,
         trackingNumber: trackNum,
       }),
     };

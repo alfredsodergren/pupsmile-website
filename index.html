@@ -10,7 +10,9 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" /></noscript>
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <!-- Preload LCP image so browser fetches it as soon as possible -->
+  <link rel="preload" as="image" href="images/banner image.png" />
 </head>
 <body>
 
@@ -78,7 +80,7 @@
 
         <!-- Mobile-only: image sits between subtext and stats -->
         <div class="hero__visual--mobile">
-          <img src="images/banner image.png" alt="PupSmile dental powder for dogs" class="hero__banner-img" />
+          <img src="images/banner image.png" alt="PupSmile dental powder for dogs" class="hero__banner-img" fetchpriority="high" loading="eager" />
         </div>
 
         <div class="hero__stats hero-anim" style="--d:.3s">
@@ -1418,7 +1420,7 @@
         <span>Total</span>
         <span class="cart-total" id="cartTotal">$39.95</span>
       </div>
-      <form id="checkoutForm" action="https://checkout.trypupsmile.com/cart/add" method="POST">
+      <form id="checkoutForm" action="https://5cukzc-j0.myshopify.com/cart/add" method="POST">
         <input type="hidden" name="id" value="53319800521031" />
         <input type="hidden" name="selling_plan" value="691708068167" />
         <input type="hidden" name="quantity" id="formQty" value="1" />
