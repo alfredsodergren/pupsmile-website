@@ -158,14 +158,6 @@ document.getElementById('qtyMinus').addEventListener('click', () => {
 document.getElementById('cartClose').addEventListener('click', closeCart);
 document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
-document.getElementById('checkoutForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const qty = parseInt(document.getElementById('formQty').value) || 1;
-  window.location.href =
-    'https://5cukzc-j0.myshopify.com/cart/53319800521031:' + qty +
-    '?selling_plan=691708068167';
-});
-
 /* ============================================================
    REVIEW SUBMISSION WIDGET
    ============================================================ */
