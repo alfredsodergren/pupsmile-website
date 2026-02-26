@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — PupSmile</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" /></noscript>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo.png" alt="PupSmile" class="nav__logo-img" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#problem">The truth</a></li>
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="index.html#founder">Our story</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="https://shopify.com/96117031239/account" class="nav__account-link" target="_blank">My Account</a></li>
+      </ul>
+      <a href="index.html#buy" class="btn btn--cta btn--sm">Get PupSmile →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="contact-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We typically reply within 24 hours. Fill out the form and we'll get back to you as soon as possible.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="contact-body">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- LEFT: FAQs -->
+        <div class="contact-faqs">
+          <h2>Quick answers</h2>
+
+          <div class="contact-faq-card">
+            <h3>I can't find a scoop. How much is a serving?</h3>
+            <p>No scoop needed! One serving is approximately one tablespoon (about 5 g). You can use any regular kitchen tablespoon. Just sprinkle it over your dog's food once a day.</p>
+          </div>
+
+          <div class="contact-faq-card">
+            <h3>Where is my order?</h3>
+            <p>Once your order has shipped, you'll receive a confirmation email with your tracking number. You can enter it on our <a href="track-order.html" style="color:var(--green);font-weight:600;">Track My Order</a> page to get the latest update. Please allow 48–72 hours after shipment for tracking to become active.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact Form -->
+        <div class="contact-form-card">
+          <h2>Send us a message</h2>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleContactSubmit(event)">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cfName">Your name <span style="color:#e53935">*</span></label>
+                <input type="text" id="cfName" name="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="cf-field">
+                <label for="cfEmail">Email address <span style="color:#e53935">*</span></label>
+                <input type="email" id="cfEmail" name="email" placeholder="jane@example.com" required />
+              </div>
+            </div>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cfOrder">Order number <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+                <input type="text" id="cfOrder" name="order_number" placeholder="e.g. #1042" />
+              </div>
+              <div class="cf-field">
+                <label for="cfSubject">Subject <span style="color:#e53935">*</span></label>
+                <select id="cfSubject" name="subject" required>
+                  <option value="" disabled selected>Select a topic</option>
+                  <option value="Order status / tracking">Order status / tracking</option>
+                  <option value="Returns & refunds">Returns &amp; refunds</option>
+                  <option value="Product question">Product question</option>
+                  <option value="Subscription management">Subscription management</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="cf-field">
+              <label for="cfMessage">Message <span style="color:#e53935">*</span></label>
+              <textarea id="cfMessage" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+
+            <div class="cf-submit-row">
+              <button type="submit" class="btn btn--primary" id="cfSubmitBtn">Send message →</button>
+              <span class="cf-success" id="cfSuccess">✓ Message sent! We'll be in touch soon.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="PupSmile" class="footer-logo" />
+        <p>Natural dental care for happy, healthy dogs.</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="track-order.html">Track My Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+          <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="https://shopify.com/96117031239/account" target="_blank">Manage Subscription</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 PupSmile. All rights reserved. · These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleContactSubmit(e) {
+      // Netlify handles the actual POST; we just show success feedback
+      const btn = document.getElementById('cfSubmitBtn');
+      const success = document.getElementById('cfSuccess');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      // Let the form submit naturally to Netlify, then show success
+      setTimeout(() => {
+        success.classList.add('show');
+        btn.textContent = 'Sent!';
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>

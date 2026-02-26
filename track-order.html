@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track My Order — PupSmile</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500&display=fallback" /></noscript>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo.png" alt="PupSmile" class="nav__logo-img" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#problem">The truth</a></li>
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="index.html#founder">Our story</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="https://shopify.com/96117031239/account" class="nav__account-link" target="_blank">My Account</a></li>
+      </ul>
+      <a href="index.html#buy" class="btn btn--cta btn--sm">Get PupSmile →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="track-hero">
+    <div class="container">
+      <h1>Track My Order</h1>
+      <p>Enter your tracking number below to see exactly where your package is.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="track-body">
+    <div class="container">
+
+      <!-- FORM CARD -->
+      <div class="track-form-card">
+        <h2>Where is my package?</h2>
+        <p>Your tracking number is in the shipping confirmation email we sent when your order left our fulfillment center. It may take 48–72 hours to activate after shipment.</p>
+        <div class="track-input-row">
+          <input type="text" id="trackingInput" placeholder="Enter tracking number" autocomplete="off" />
+          <button class="btn btn--primary" id="trackBtn" onclick="trackOrder()">Track →</button>
+        </div>
+        <p class="track-note">Can't find it? <a href="contact.html" style="color:var(--green);">Contact us</a> and we'll look it up for you.</p>
+      </div>
+
+      <!-- LOADING -->
+      <div class="track-loading" id="trackLoading">
+        <span class="track-spinner"></span>
+        Looking up your shipment…
+      </div>
+
+      <!-- ERROR -->
+      <div class="track-error" id="trackError"></div>
+
+      <!-- RESULT CARD (shown after successful lookup) -->
+      <div class="track-result-card" id="trackResult">
+        <span class="track-badge" id="trackBadge"></span>
+
+        <!-- ETA row -->
+        <div class="track-eta" id="trackEta" style="display:none">
+          <span class="track-eta-icon">📅</span>
+          <div class="track-eta-text">
+            <div class="track-eta-label">Estimated delivery</div>
+            <div class="track-eta-value" id="trackEtaValue"></div>
+            <div class="track-dest-line" id="trackDestLine"></div>
+          </div>
+        </div>
+
+        <!-- Event timeline -->
+        <div class="track-timeline-heading">Shipment updates</div>
+        <ul class="track-timeline" id="trackTimeline"></ul>
+      </div>
+
+      <!-- HOW IT WORKS (always visible, serves as "what to expect") -->
+      <div class="track-steps" id="trackSteps">
+        <div class="track-step">
+          <span class="track-step-icon">📦</span>
+          <h3>Order Confirmed</h3>
+          <p>Your order has been received and is being prepared at our fulfillment center.</p>
+        </div>
+        <div class="track-step">
+          <span class="track-step-icon">✈️</span>
+          <h3>In Transit</h3>
+          <p>Your package is travelling through our global logistics network. Updates appear every 24–48 hrs.</p>
+        </div>
+        <div class="track-step">
+          <span class="track-step-icon">🏡</span>
+          <h3>Out for Delivery</h3>
+          <p>Your package has arrived locally and will be at your door soon.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="PupSmile" class="footer-logo" />
+        <p>Natural dental care for happy, healthy dogs.</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="track-order.html">Track My Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+          <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="https://shopify.com/96117031239/account" target="_blank">Manage Subscription</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 PupSmile. All rights reserved. · These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    const COLOR_CLASS = {
+      blue:   'track-badge--blue',
+      green:  'track-badge--green',
+      yellow: 'track-badge--yellow',
+      red:    'track-badge--red',
+      gray:   'track-badge--gray',
+    };
+
+    function formatETA(dateStr) {
+      if (!dateStr) return null;
+      // dateStr can be "YYYY-MM-DD" or "YYYY-MM-DD HH:MM"
+      const parts = dateStr.split(' ')[0].split('-');
+      const est = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
+      const diffDays = Math.round((est - now) / 86400000);
+
+      if (diffDays < 0)  return 'Expected very soon';
+      if (diffDays === 0) return 'Expected today';
+      if (diffDays === 1) return 'Expected tomorrow';
+      if (diffDays <= 6)  return `Expected in ${diffDays} days`;
+      return `Expected by ${est.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
+    }
+
+    function formatEventDate(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      if (isNaN(d)) return dateStr;
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    }
+
+    function setLoading(on) {
+      document.getElementById('trackLoading').classList.toggle('visible', on);
+      document.getElementById('trackBtn').disabled = on;
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('trackError');
+      el.textContent = msg;
+      el.classList.add('visible');
+      document.getElementById('trackResult').classList.remove('visible');
+    }
+
+    function clearState() {
+      document.getElementById('trackError').classList.remove('visible');
+      document.getElementById('trackResult').classList.remove('visible');
+    }
+
+    async function trackOrder() {
+      const num = document.getElementById('trackingInput').value.trim();
+      if (!num) { showError('Please enter a tracking number.'); return; }
+
+      clearState();
+      setLoading(true);
+
+      try {
+        const res = await fetch(`/.netlify/functions/track?number=${encodeURIComponent(num)}`);
+        const data = await res.json();
+        setLoading(false);
+
+        if (data.error) { showError(data.error); return; }
+
+        // Handle "not found" / "pending" states that have only a message
+        if (data.message) {
+          showError(data.message);
+          return;
+        }
+
+        // --- Render result card ---
+        const card = document.getElementById('trackResult');
+
+        // Badge
+        const badge = document.getElementById('trackBadge');
+        badge.textContent = data.statusLabel || 'In Transit';
+        badge.className = 'track-badge ' + (COLOR_CLASS[data.statusColor] || COLOR_CLASS.blue);
+
+        // ETA
+        const etaBox = document.getElementById('trackEta');
+        const etaVal = document.getElementById('trackEtaValue');
+        const destLine = document.getElementById('trackDestLine');
+        const etaText = formatETA(data.estimatedDelivery);
+        if (etaText) {
+          etaVal.textContent = etaText;
+          destLine.textContent = data.destinationCity ? `Heading to ${data.destinationCity}` : '';
+          etaBox.style.display = 'flex';
+        } else if (data.destinationCity) {
+          etaVal.textContent = `Heading to ${data.destinationCity}`;
+          etaBox.style.display = 'flex';
+        } else {
+          etaBox.style.display = 'none';
+        }
+
+        // Timeline
+        const timeline = document.getElementById('trackTimeline');
+        timeline.innerHTML = '';
+
+        const events = data.events || [];
+        if (events.length === 0) {
+          // Package likely still between origin and destination country
+          timeline.innerHTML = `<li><div class="track-en-route">Your package has departed our fulfillment center and is on its way to you. Detailed tracking updates will appear once it reaches your country — usually within a few days.</div></li>`;
+        } else {
+          events.forEach((ev, i) => {
+            const li = document.createElement('li');
+            li.className = 'track-event';
+            li.innerHTML = `
+              <div class="track-event-dot-col">
+                <div class="track-event-dot"></div>
+                <div class="track-event-line"></div>
+              </div>
+              <div>
+                <div class="track-event-desc">${ev.description || 'Update'}</div>
+                <div class="track-event-meta">${[ev.location, formatEventDate(ev.date)].filter(Boolean).join(' · ')}</div>
+              </div>`;
+            timeline.appendChild(li);
+          });
+        }
+
+        card.classList.add('visible');
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      } catch (err) {
+        setLoading(false);
+        showError('Something went wrong. Please check your connection and try again.');
+      }
+    }
+
+    document.getElementById('trackingInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') trackOrder();
+    });
+  </script>
+
+</body>
+</html>
